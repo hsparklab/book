@@ -1,0 +1,33 @@
+{{>layout/header}}
+<h1>TEST</h1>
+<a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>
+{{#userName}}
+    Logged in as : <span id="user">{{userName}}</span>
+    <a href="/logout" role="button">Logout</a>
+{{/userName}}
+{{^userName}}
+    <a href="/oauth2/authorization/google" role="button">Google Login</a>
+    <a href="/oauth2/authorization/naver" role="button">Naver Login</a>
+
+{{/userName}}
+<table>
+    <thead>
+    <tr>
+        <th>게시물 번호</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>최종수정일</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#posts}}
+    <tr>
+        <td>{{id}}</td>
+        <td><a href="/posts/update/{{id}}">{{title}}</a></td>
+        <td>{{author}}</td>
+        <td>{{modifiedDate}}</td>
+    </tr>
+    {{/posts}}
+    </tbody>
+</table>
+{{>layout/footer}}
